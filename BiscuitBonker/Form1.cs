@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace BiscuitBonker
 {
@@ -16,13 +17,29 @@ namespace BiscuitBonker
         public Form1()
         {
             InitializeComponent();
+            realTimeLoop();
+        }
+        async void realTimeLoop() //things you want to check constantly go here, ex grandmas baking (things user doesnt do)
+        {
+            while (true) 
+            {
+               
+                if (cookieCount >= 10)
+                {
+                    grandmaLabel.Text = "1 grandma!";
+               
+                }
+                await Task.Delay(10);
+                
+                
+            }
         }
 
         private void cookieButton_Click(object sender, EventArgs e)
         {
             cookieCount++;
-            outputLabel.Text = "" + cookieCount;
-
+                outputLabel.Text = "" + cookieCount;
+            
         }
     }
 }
